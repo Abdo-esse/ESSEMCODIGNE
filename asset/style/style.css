@@ -38,15 +38,23 @@ header {
 }
 .item {
   width: 25%;
-
+  text-align: center;
   border-radius: 13px;
 }
 .item1 {
-  background: #ffd8af92;
+  background: #ffd8af;
+  color: #f68915;
 }
 .item2 {
   background: #b0fce5;
+  color: #3d8c5c;
 }
 .item3 {
   background: #c4bdfc;
+  color: #4a3989;
 }
+.item h4 {
+  background-color: rgb(255, 255, 255, 0.4);
+  padding: 6px;
+}
+
