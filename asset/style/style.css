@@ -101,7 +101,8 @@ svg {
   background: white;
   color: black;
   padding: 7px 8px 0 8px;
-  margin-top: 8px;
+  margin: 8px 5px 0  5px;
+  cursor: pointer;
   border: 0.5px rgba(0, 0, 0, 0.397) solid;
   border-radius: 10px;
 }
