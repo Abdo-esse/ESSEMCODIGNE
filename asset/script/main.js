@@ -8,7 +8,9 @@ const ouverly=document.querySelector('.ouverly')
 const modal=document.querySelector('#modal')
 
 // svg de ferme modal
-const fermeMoldalBtn=document.querySelector('.fermeModalBtn')
+const fermeMoldalBtn=document.querySelector('.fermeModalSvg')
+
+
 
 
 
@@ -34,3 +36,6 @@ function fermeModal() {
 
 // L'appel du function  d'affichage modal
 addTaskBtn.addEventListener('click',addTask)
+
+// L'appel du function  de ferme  modal
+fermeMoldalBtn.addEventListener('click', fermeModal)
