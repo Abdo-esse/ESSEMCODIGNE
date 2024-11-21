@@ -116,3 +116,6 @@ svg {
 .svg:hover{
   color: rgb(12, 181, 80);
 }
+#sauvegarder{
+  display: none;
+}

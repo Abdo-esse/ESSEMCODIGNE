@@ -27,23 +27,25 @@
             
           <label for="title" class="form-label">Title</label>
           <input type="text" class="form-control" id="title" required placeholder="What need to be done?">
-          <span class="errorTitle" style="color: red;"></span>
+          
           
         <div class="mb-3">
           <label for="description" class="form-label">Description</label>
           <textarea name="Description" required class="form-control" id="description"></textarea>
-          <span class="errorDescription" style="color: red;"></span>
+          
         </div>
         <div class="mb-3 d-flex justify-content-evenly">
             <div> <input type="radio"  class="typeTask" value="bug" name="task">bug</div>
             <div><input type="radio"  class="typeTask" value="Story" name="task">Story</div>
             <div> <input type="radio"  class="typeTask" value="task" name="task">task</div>
         </div>
-        <div class="mb-3">
-          <span class="errortypeTask" style="color: red;"></span>
-        </div>
-        <button type="button" class="btn btn-primary fermeModalBtn">add</button>
+        
+        <button type="button" class="btn btn-primary fermeModalBtn add">add</button>
+        <button type="button" id="sauvegarder" class="btn btn-primary  ">Sauvegarder</button>
+
        </div>
+     
+    
     
 </div>
 
