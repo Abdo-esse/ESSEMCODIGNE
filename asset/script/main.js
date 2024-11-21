@@ -10,6 +10,8 @@ const modal=document.querySelector('#modal')
 // svg de ferme modal
 const fermeMoldalBtn=document.querySelector('.fermeModalSvg')
 
+// btn
+
 
 
 
