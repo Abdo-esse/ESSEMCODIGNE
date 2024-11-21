@@ -126,7 +126,7 @@ function updateData() {
     //renitialisation des champ
     title.value = "";
     description.value = "";
-    //renitialisation des champ
+    //renitialisation des  btn
     fermeModalBtn.style.display = "block";
     sauvegarder.style.display = "none";
   }
@@ -149,10 +149,28 @@ function afficherDetail(index) {
   title.style.display = "none";
   description.style.display = "none";
    nametask.forEach(e=>{
-    e.style.display = "none";
+    e.style.display = "none"; 
 })
 radios.forEach(radio => {
     radio.style.display = "none";        
+  });
+  //aficher data du task
+  document.querySelector('.titleTask').textContent=data[index].Title
+  document.querySelector('.descriptionTask').textContent=data[index].Description
+  document.querySelector('.nameTaskh6').textContent=data[index].typeTask
+
+  //femer le modal 
+  ouverly.style.display = "none";
+  modal.style.display = "none";
+  fermeModalBtn.style.display = "block";
+  sauvegarder.style.display = "block";
+  title.style.display = "block";
+  description.style.display = "block";
+   nametask.forEach(e=>{
+    e.style.display = "block"; 
+})
+radios.forEach(radio => {
+    radio.style.display = "block";        
   });
 }
 
