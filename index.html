@@ -17,26 +17,38 @@
             <button class="addTaskBtn">+ Add task</button>
         </div>
     </header>
+    <div class="ouverly"></div>
+    <div id="modal" >
+        <div class="box">
+            <svg width="40" height="40" viewbox="0 0 40 40"><path d="M 10,10 L 30,30 M 30,10 L 10,30" stroke="black" stroke-width="4" /></svg>
+            </div>
+        <div class="mb-3">
+            
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" placeholder="What need to be done?">
+          
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          
+          <textarea name="Description" class="form-control" id="description"></textarea>
+        </div>
+        <div class="mb-3 d-flex justify-content-evenly">
+            <div> <input type="radio" name="task">bug</div>
+            <div><input type="radio" name="task">Story</div>
+            <div> <input type="radio" name="task">task</div>
+          
+        </div>
+    
+        <button type="button" class="btn btn-primary">add</button>
+       </div>
+</div>
+
     <div class="container">
         <div class="item item1"><h4>TO DO</h4></div>
         <div class="item item2"><h4>IN PROGRESS</h4></div>
         <div class="item item3"><h4>DONE</h4></div>
     </div>
     
-     <div id="modal" >
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" placeholder="What need to be done?">
-              
-            <div class="mb-3">
-              <label for="description" class="form-label">Description</label>
-              
-              <textarea name="Description" class="form-control" id="description"></textarea>
-            </div>
-        
-            <button type="button" class="btn btn-primary">add</button>
-        </div>
-  
-   
+     
 </body>
 </html>

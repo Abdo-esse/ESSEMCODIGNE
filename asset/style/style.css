@@ -22,12 +22,50 @@ header {
 }
 .addTaskBtn {
   border: none;
-  width: 10%;
-  height: 38%;
+  width: 8%;
+  height: 45%;
   color: #6495ed;
   background: #d6eaf8;
   border-radius: 43px;
   cursor: pointer;
+}
+.ouverly{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(0,0, 0,0.5);
+display: none;
+}
+#modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px;
+  height: 400px;
+  background: white;
+  box-shadow: rgb(99, 99, 99,0.2) 0px 2px 8px 0px;
+  border-radius: 3px;
+  padding: 20Px;
+  display: none;
+}
+.box{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+svg {
+  height: 100%;
+  width: 100%;
+}
+.box:hover{
+  transform: rotate(360deg);
 }
 .container {
   display: flex;
