@@ -33,18 +33,21 @@
           <textarea name="Description" class="form-control" id="description"></textarea>
         </div>
         <div class="mb-3 d-flex justify-content-evenly">
-            <div> <input type="radio" name="task">bug</div>
-            <div><input type="radio" name="task">Story</div>
-            <div> <input type="radio" name="task">task</div>
+            <div> <input type="radio" class="typeTask" name="task">bug</div>
+            <div><input type="radio" class="typeTask" name="task">Story</div>
+            <div> <input type="radio" class="typeTask" name="task">task</div>
           
         </div>
     
-        <button type="button fermeModalBtn" class="btn btn-primary">add</button>
+        <button type="button" class="btn btn-primary fermeModalBtn">add</button>
        </div>
 </div>
 
     <div class="container">
-        <div class="item item1"><h4>TO DO</h4></div>
+        <div class="item item1" id="todo">
+            <h4>TO DO</h4>
+            <div class="tasks"></div>
+        </div>
         <div class="item item2"><h4>IN PROGRESS</h4></div>
         <div class="item item3"><h4>DONE</h4></div>
     </div>
