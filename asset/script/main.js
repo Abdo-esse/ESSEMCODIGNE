@@ -1,160 +1,137 @@
 //button add Task Btn
-const addTaskBtn=document.querySelector('.addTaskBtn')
+const addTaskBtn = document.querySelector(".addTaskBtn");
 
 //Div ouverly
-const ouverly=document.querySelector('.ouverly')
+const ouverly = document.querySelector(".ouverly");
 
 //div modal
-const modal=document.querySelector('#modal')
+const modal = document.querySelector("#modal");
 
 // svg de ferme modal
-const fermeMoldalSvg=document.querySelector('.fermeModalSvg')
+const fermeMoldalSvg = document.querySelector(".fermeModalSvg");
 
 // button add dans add task
-const fermeModalBtn=document.querySelector('.fermeModalBtn')
+const fermeModalBtn = document.querySelector(".fermeModalBtn");
 
-//button sauvegarder 
-const sauvegarder=document.querySelector('#sauvegarder')
+//button sauvegarder
+const sauvegarder = document.querySelector("#sauvegarder");
 
 //L'input du title
-let title=document.querySelector('#title')
+let title = document.querySelector("#title");
 
 //L'input du decrition
-let description=document.querySelector('#description')
+let description = document.querySelector("#description");
 
 //les inputs du type task
 const radios = document.querySelectorAll('input[name="task"]');
 
 // div to do
-const tasks=document.querySelector('.tasks')
+const tasks = document.querySelector(".tasks");
 
 //index du task
-let currentIndex=null
+let currentIndex = null;
 
 // tableau du datac
- let data=[]
-
-
-
-
+let data = [];
 
 //Declaration des function
 
 //Declaration du fonction d'affichage modal
 function addTask() {
-   ouverly.style.display= "block";
-   modal.style.display= "block";
-    
+  ouverly.style.display = "block";
+  modal.style.display = "block";
 }
 
 //Declaration du fonction de ferme modal
 function fermeModal() {
-    ouverly.style.display= "none";
-    modal.style.display= "none";
+  ouverly.style.display = "none";
+  modal.style.display = "none";
 }
-
-
 
 //Decration du fonction de remlire data
 function remplireData(e) {
-    
-    e.preventDefault()
-    let selectedValue = null;
-     
-    
-    radios.forEach((radio) => {
-      if (radio.checked) {
-         selectedValue = radio.value;
-        }
-    });
+  e.preventDefault();
+  let selectedValue = null;
 
-    //validation des inputs 
-    if (title.value=="" || description.value=="" || selectedValue==null) {
-        
-        return;
+  radios.forEach((radio) => {
+    if (radio.checked) {
+      selectedValue = radio.value;
     }
-    
-    let valueInpits={
-        Title:title.value,
-        Description:description.value,
-        typeTask:selectedValue
-    }
-    data.push(valueInpits)
+  });
 
+  //validation des inputs
+  if (title.value == "" || description.value == "" || selectedValue == null) {
+    return;
+  }
 
+  let valueInpits = {
+    Title: title.value,
+    Description: description.value,
+    typeTask: selectedValue,
+  };
+  data.push(valueInpits);
 
-  displayTask()
+  displayTask();
 
-    //ferme modal
-    ouverly.style.display= "none";
-    modal.style.display= "none";
+  //ferme modal
+  ouverly.style.display = "none";
+  modal.style.display = "none";
 
-    title.value=''
-    description.value=''
+  title.value = "";
+  description.value = "";
 }
 
-//declaration du fonction de ouvrir Modal Update 
+//declaration du fonction de ouvrir Modal Update
 function ouvrirModalUpdat(index) {
-    
-    currentIndex=index;
-    title.value=data[index].Title
-    description.value=data[index].Description
- // ouvert du modal pour modifier
-    ouverly.style.display= "block";
-   modal.style.display= "block";
-   fermeModalBtn.style.display="none"
-   sauvegarder.style.display= "block";
-      
+  currentIndex = index;
+  title.value = data[index].Title;
+  description.value = data[index].Description;
+  // ouvert du modal pour modifier
+  ouverly.style.display = "block";
+  modal.style.display = "block";
+  fermeModalBtn.style.display = "none";
+  sauvegarder.style.display = "block";
 }
 
 // declaration de fonction de updateData
 function updateData() {
-    let selectedValue = null;
-    console.log(currentIndex);
-    if (currentIndex!==null) {
-       
-     
-    
-        radios.forEach((radio) => {
-          if (radio.checked) {
-             selectedValue = radio.value;
-            }
-        });
+  let selectedValue = null;
+  console.log(currentIndex);
+  if (currentIndex !== null) {
+    radios.forEach((radio) => {
+      if (radio.checked) {
+        selectedValue = radio.value;
+      }
+    });
 
-    
-     if (title.value=="" || description.value=="" || selectedValue==null) {
-        
-        return;
+    if (title.value == "" || description.value == "" || selectedValue == null) {
+      return;
     }
-    data[currentIndex]={
-        Title:title.value,
-        Description:description.value,
-        typeTask:selectedValue
-    }
-    displayTask()
-    
-    
+    data[currentIndex] = {
+      Title: title.value,
+      Description: description.value,
+      typeTask: selectedValue,
+    };
+    displayTask();
 
     //ferme modal
-    ouverly.style.display= "none";
-    modal.style.display= "none";
-//renitialisation des champ
-    title.value=''
-    description.value=''
+    ouverly.style.display = "none";
+    modal.style.display = "none";
     //renitialisation des champ
-    fermeModalBtn.style.display="block"
-   sauvegarder.style.display= "none";
-
-}
-
+    title.value = "";
+    description.value = "";
+    //renitialisation des champ
+    fermeModalBtn.style.display = "block";
+    sauvegarder.style.display = "none";
+  }
 }
 
 //l'affichage de task
 function displayTask() {
-    tasks.innerHTML=``
-    //display task
-   data.forEach((item,index) =>{
-       tasks.innerHTML+=`
+  tasks.innerHTML = ``;
+  //display task
+  data.forEach((item, index) => {
+    tasks.innerHTML += `
                 <div class="task">
                  <h5>${item.Title}</h5>
                <div class="proprieter">
@@ -167,34 +144,20 @@ function displayTask() {
            </div>
               
            
-       `
-   })
+       `;
+  });
 }
-
 
 //appel des functions
 
 // L'appel du function  d'affichage modal
-addTaskBtn.addEventListener('click',addTask)
+addTaskBtn.addEventListener("click", addTask);
 
 // L'appel du function  de ferme  modal
-fermeMoldalSvg.addEventListener('click', fermeModal)
+fermeMoldalSvg.addEventListener("click", fermeModal);
 
 // L'appel du function  de dissply data
-fermeModalBtn.addEventListener('click',remplireData)
+fermeModalBtn.addEventListener("click", remplireData);
 
 //
-sauvegarder.addEventListener('click',updateData)
-
-
-
-
-
-
-
-
-
-
-
-
-
+sauvegarder.addEventListener("click", updateData);
