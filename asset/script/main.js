@@ -256,21 +256,27 @@ function dargTask() {
             
         })
       itemsDiv.forEach(div=>{
-        div.addEventListener('dragover',function(){
+        div.addEventListener('dragover',function(e){
+        
+            e.preventDefault(); // Autorise l'événement drop
+       
+      // //     itemsDiv[0].style.background='#fdc488'
+      // //     itemsDiv[1].style.background='#5afbcb'
+      // //     itemsDiv[2].style.background='#a297f7ea'
+      // //   })
+      // //   // div.addEventListener('dragleave',function(){
           
-          itemsDiv[0].style.background='#fdc488'
-          itemsDiv[1].style.background='#5afbcb'
-          itemsDiv[2].style.background='#a297f7ea'
-        })
-        // div.addEventListener('dragleave',function(){
-          
-        //   itemsDiv[0].style.background='#ffd8af'
-        //   itemsDiv[1].style.background='#b0fce5'
-        //   itemsDiv[2].style.background='#c4bdfc'
+      // //   //   itemsDiv[0].style.background='#ffd8af'
+      // //   //   itemsDiv[1].style.background='#b0fce5'
+      // //   //   itemsDiv[2].style.background='#c4bdfc'
 
            
           
-        // })
+        })
+      div.addEventListener('drop',function(){
+           this.append(drag)
+           item.style.opacity='1'
+      })
       })
       
     })
