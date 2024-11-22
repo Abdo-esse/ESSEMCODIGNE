@@ -33,11 +33,13 @@ let currentIndex = null;
 
 //les div qui contient les name task
 const nametask=document.querySelectorAll('.nametask')
-console.log(inputsRadio);
+
+// button de ferme modala dafichage data
+const fermer = document.querySelector('#fermer')
 
 
 
-// tableau du datac
+// tableau du data
 let data = [];
 
 //Declaration des function
@@ -78,7 +80,7 @@ function remplireData(e) {
   data.push(valueInpits);
 
   displayTask();
-
+  localStorageData()
   //ferme modal
   ouverly.style.display = "none";
   modal.style.display = "none";
@@ -96,6 +98,7 @@ function ouvrirModalUpdat(index) {
   ouverly.style.display = "block";
   modal.style.display = "block";
   fermeModalBtn.style.display = "none";
+  fermeMoldalSvg.style.display = "none";
   sauvegarder.style.display = "block";
 }
 
@@ -123,12 +126,14 @@ function updateData() {
     //ferme modal
     ouverly.style.display = "none";
     modal.style.display = "none";
+
     //renitialisation des champ
     title.value = "";
     description.value = "";
     //renitialisation des  btn
     fermeModalBtn.style.display = "block";
     sauvegarder.style.display = "none";
+    localStorageData()
   }
 }
 
@@ -137,7 +142,7 @@ function deletTask(index) {
      data.splice(index,1)
     
     displayTask()
-    
+    localStorageData()
 }
 //l'affichage du detail du task
 function afficherDetail(index) {
@@ -148,6 +153,8 @@ function afficherDetail(index) {
   sauvegarder.style.display = "none";
   title.style.display = "none";
   description.style.display = "none";
+  fermeMoldalSvg.style.display = "none";
+  fermer.style.display = "block";
    nametask.forEach(e=>{
     e.style.display = "none"; 
 })
@@ -159,20 +166,46 @@ radios.forEach(radio => {
   document.querySelector('.descriptionTask').textContent=data[index].Description
   document.querySelector('.nameTaskh6').textContent=data[index].typeTask
 
-  //femer le modal 
+  
+}
+function fermeModalData() {
+    //femer le modal 
   ouverly.style.display = "none";
   modal.style.display = "none";
   fermeModalBtn.style.display = "block";
-  sauvegarder.style.display = "block";
+ 
   title.style.display = "block";
   description.style.display = "block";
+  fermer.style.display = "none";
+  fermeMoldalSvg.style.display = "block";
    nametask.forEach(e=>{
     e.style.display = "block"; 
+    
 })
 radios.forEach(radio => {
     radio.style.display = "block";        
   });
+ 
+  //aficher data du task
+  document.querySelector('.titleTask').textContent=""
+  document.querySelector('.descriptionTask').textContent=""
+  document.querySelector('.nameTaskh6').textContent=""
 }
+
+// local storage des data
+function localStorageData() {
+    localStorage.setItem("data", JSON.stringify(data));
+}
+
+// initialisation des données locales
+function initData() {
+    const storedData = localStorage.getItem("data");
+    if (storedData) {
+        data = JSON.parse(storedData);
+        displayTask();
+    }
+}
+
 
 function displayTask() {
   tasks.innerHTML = ``;
@@ -208,3 +241,11 @@ fermeModalBtn.addEventListener("click", remplireData);
 
 //
 sauvegarder.addEventListener("click", updateData);
+
+// l'appel du fonction de ferme modal apre l'affichage
+fermer.addEventListener('click',fermeModalData)
+
+// Fonction exécutée au chargement de la page
+document.addEventListener("DOMContentLoaded", () => {
+    initData(); // Charge les données stockées
+});
