@@ -37,6 +37,13 @@ const nametask=document.querySelectorAll('.nametask')
 // button de ferme modala dafichage data
 const fermer = document.querySelector('#fermer')
 
+// les div de class item 
+let itemsDiv=document.querySelectorAll('.item')
+console.log(itemsDiv);
+
+
+//
+let drag=null
 
 
 // tableau du data
@@ -195,7 +202,7 @@ radios.forEach(radio => {
 
 // local storage des data
 function localStorageData() {
-    localStorage.setItem("data", data);
+    localStorage.setItem("data", JSON.stringify(data));
 }
 
 // initialisation des données locales
@@ -213,7 +220,7 @@ function displayTask() {
   //display task
   data.forEach((item, index) => {
     tasks.innerHTML += `
-                <div class="task" onclick="afficherDetail(${index})">
+                <div class="task" draggable="true" onclick="afficherDetail(${index})">
                  <h5>${item.Title}</h5>
                <div class="proprieter">
                    <p>${item.typeTask}</p>
@@ -227,6 +234,47 @@ function displayTask() {
            
        `;
   });
+  dargTask()
+}
+
+
+function dargTask() {
+    let itemes = document.querySelectorAll('.task')
+    
+    
+    itemes.forEach(item=>{
+        item.addEventListener('dragstart',function () {
+
+           
+            drag=item
+            item.style.opacity='0.5'
+            
+        })
+        item.addEventListener('dragend',function () {
+            drag=null
+           
+            
+        })
+      itemsDiv.forEach(div=>{
+        div.addEventListener('dragover',function(){
+          
+          itemsDiv[0].style.background='#fdc488'
+          itemsDiv[1].style.background='#5afbcb'
+          itemsDiv[2].style.background='#a297f7ea'
+        })
+        // div.addEventListener('dragleave',function(){
+          
+        //   itemsDiv[0].style.background='#ffd8af'
+        //   itemsDiv[1].style.background='#b0fce5'
+        //   itemsDiv[2].style.background='#c4bdfc'
+
+           
+          
+        // })
+      })
+      
+    })
+    
 }
 
 //appel des functions

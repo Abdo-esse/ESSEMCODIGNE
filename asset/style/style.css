@@ -29,6 +29,11 @@ header {
   border-radius: 43px;
   cursor: pointer;
 }
+.addTaskBtn:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
 .ouverly{
   position: fixed;
   top: 0;
@@ -73,6 +78,7 @@ svg {
   justify-content: space-evenly;
   width: 100vw;
   height: 80vh;
+  
 }
 .item {
   width: 25%;
