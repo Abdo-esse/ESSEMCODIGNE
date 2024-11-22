@@ -57,8 +57,8 @@ function fermeModal() {
 }
 
 //Decration du fonction de remlire data
-function remplireData(e) {
-  e.preventDefault();
+function remplireData() {
+
   let selectedValue = null;
 
   radios.forEach((radio) => {
@@ -72,6 +72,7 @@ function remplireData(e) {
     return;
   }
 
+//ramplire value des inputs dans object
   let valueInpits = {
     Title: title.value,
     Description: description.value,
@@ -105,7 +106,7 @@ function ouvrirModalUpdat(index) {
 // declaration de fonction de updateData
 function updateData() {
   let selectedValue = null;
-  console.log(currentIndex);
+  
   if (currentIndex !== null) {
     radios.forEach((radio) => {
       if (radio.checked) {
@@ -122,7 +123,7 @@ function updateData() {
       typeTask: selectedValue,
     };
     displayTask();
-
+    localStorageData()
     //ferme modal
     ouverly.style.display = "none";
     modal.style.display = "none";
@@ -133,7 +134,7 @@ function updateData() {
     //renitialisation des  btn
     fermeModalBtn.style.display = "block";
     sauvegarder.style.display = "none";
-    localStorageData()
+    
   }
 }
 
@@ -194,7 +195,7 @@ radios.forEach(radio => {
 
 // local storage des data
 function localStorageData() {
-    localStorage.setItem("data", JSON.stringify(data));
+    localStorage.setItem("data", data);
 }
 
 // initialisation des données locales
@@ -247,5 +248,5 @@ fermer.addEventListener('click',fermeModalData)
 
 // Fonction exécutée au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
-    initData(); // Charge les données stockées
+    initData(); 
 });
