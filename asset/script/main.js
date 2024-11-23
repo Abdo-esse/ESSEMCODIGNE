@@ -104,70 +104,7 @@ function remplireData() {
   description.value = "";
 }
 
-// //declaration du fonction de ouvrir Modal Update
-// function ouvrirModalUpdat(index) {
-//   currentIndex = index;
-//   title.value = data[index].Title;
-//   description.value = data[index].Description;
-//   // ouvert du modal pour modifier
-//   ouverly.style.display = "block";
-//   modal.style.display = "block";
-//   fermeModalBtn.style.display = "none";
-//   fermeMoldalSvg.style.display = "none";
-//   sauvegarder.style.display = "block";
-// }
 
-// // declaration de fonction de updateData
-// function updateData(targetColumnID) {
-//   const targetColumn = document.getElementById(targetColumnID);
-//   if (!targetColumn) {
-//     console.error(`La colonne avec l'ID "${targetColumnID}" n'existe pas.`);
-//     return;
-//   }
-  
-//   let selectedValue = null;
-  
-//   if (currentIndex !== null) {
-//     radios.forEach((radio) => {
-//       if (radio.checked) {
-//         selectedValue = radio.value;
-//       }
-//     });
-
-//     if (title.value == "" || description.value == "" || selectedValue == null) {
-//       return;
-//     }
-//     data[currentIndex] = {
-//       Title: title.value,
-//       Description: description.value,
-//       typeTask: selectedValue,
-//       column:targetColumn
-//     };
-//     console.log(data);
-    
-    
-//     displayTask(targetColumnID);
-//     localStorageData()  
-//     fermeModalUpdat()
-    
-    
-//   }
-  
-// }
-// function fermeModalUpdat() {
-//   console.log('rak nadi');
-  
-//   //ferme modal
-//   ouverly.style.display = "none";
-//   modal.style.display = "none";
-
-//   //renitialisation des champ
-//   title.value = "";
-//   description.value = "";
-//   //renitialisation des  btn
-//   fermeModalBtn.style.display = "block";
-//   sauvegarder.style.display = "none";
-// }
 let currentTargetColumnID = null;
 
 // Fonction pour ouvrir le modal
@@ -190,11 +127,7 @@ function ouvrirModalUpdat(index) {
 
 // Fonction pour mettre à jour les données
 function updateData() {
-  // // Vérifier si une tâche est sélectionnée pour la mise à jour
-  // if (currentIndex === null) {
-    
-  //   return;
-  // }
+  
 
   // Obtenir la valeur sélectionnée pour le type de tâche
   let selectedValue = null;
@@ -212,7 +145,7 @@ function updateData() {
 
   // Mettre à jour les données
   data[currentIndex] = {
-    ...data[currentIndex], // Conserver les autres propriétés (comme column)
+    ...data[currentIndex], // Conserver les autres propriétés 
     Title: title.value,
     Description: description.value,
     typeTask: selectedValue,
@@ -343,18 +276,9 @@ function displayTask(targetColumnID) {
               
            
        `;
-      //  const targetColumn = document.getElementById(item.column);
-      //  if (targetColumn && targetColumn.querySelector(".tasks")) {
-      //      targetColumn.querySelector(".tasks").innerHTML += taskHTML;
-      //  } else {
-      //      console.error(`La colonne avec l'ID "${item.column}" n'existe pas.`);
-      //  }
+     
       let targetColumnID=item.column
       const targetColumn = document.getElementById(targetColumnID);
-// if (!targetColumn) {
-//     console.error(`La colonne avec l'ID "${item.column}" n'existe pas.`);
-//     return;
-// }
 targetColumn.querySelector(".tasks").innerHTML += taskHTML;
        
   });
