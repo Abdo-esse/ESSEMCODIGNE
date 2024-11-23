@@ -26,7 +26,14 @@ let description = document.querySelector("#description");
 const radios = document.querySelectorAll('input[name="task"]');
 
 // div to do
-const tasks = document.querySelector(".tasks");
+const tasks = document.querySelectorAll(".tasks");
+
+
+//test 
+let test= document.getElementById("todo")
+console.log(test);
+
+
 
 //index du task
 let currentIndex = null;
@@ -84,9 +91,9 @@ function remplireData() {
     Title: title.value,
     Description: description.value,
     typeTask: selectedValue,
+     column: "todo"
   };
   data.push(valueInpits);
-
   displayTask();
   localStorageData()
   //ferme modal
@@ -129,6 +136,7 @@ function updateData() {
       Description: description.value,
       typeTask: selectedValue,
     };
+    
     displayTask();
     localStorageData()
     //ferme modal
@@ -148,7 +156,7 @@ function updateData() {
 //function de delet task
 function deletTask(index) {
      data.splice(index,1)
-    
+     
     displayTask()
     localStorageData()
 }
@@ -211,15 +219,16 @@ function initData() {
     if (storedData) {
         data = JSON.parse(storedData);
         displayTask();
+        
     }
 }
 
 
 function displayTask() {
-  tasks.innerHTML = ``;
+  tasks.forEach((taskDiv)=>(taskDiv.innerHTM=""))
   //display task
   data.forEach((item, index) => {
-    tasks.innerHTML += `
+   const taskHTML  = `
                 <div class="task" draggable="true" onclick="afficherDetail(${index})">
                  <h5>${item.Title}</h5>
                <div class="proprieter">
@@ -233,9 +242,13 @@ function displayTask() {
               
            
        `;
+      const targetColumn = document.getElementById(item.column);
+    targetColumn.querySelector(".tasks").innerHTML += taskHTML;
   });
   dargTask()
 }
+
+
 
 
 function dargTask() {
@@ -258,29 +271,39 @@ function dargTask() {
       itemsDiv.forEach(div=>{
         div.addEventListener('dragover',function(e){
         
-            e.preventDefault(); // Autorise l'événement drop
-       
-      // //     itemsDiv[0].style.background='#fdc488'
-      // //     itemsDiv[1].style.background='#5afbcb'
-      // //     itemsDiv[2].style.background='#a297f7ea'
-      // //   })
-      // //   // div.addEventListener('dragleave',function(){
-          
-      // //   //   itemsDiv[0].style.background='#ffd8af'
-      // //   //   itemsDiv[1].style.background='#b0fce5'
-      // //   //   itemsDiv[2].style.background='#c4bdfc'
-
+            e.preventDefault(); 
            
           
         })
       div.addEventListener('drop',function(){
-           this.append(drag)
-           item.style.opacity='1'
-      })
+           this.querySelector('.tasks').append(drag)
+          
+
+           const draggedTaskTitle = drag.querySelector("h5").textContent;
+            let iditemDiv=this.getAttribute("id");
+            
+            
+            
+           
+            
+              data.forEach((task) => {
+              if (task.Title === draggedTaskTitle) {
+                task.column = iditemDiv;
+              }
+            });
+          
+            // console.log(test);
+            
+            localStorageData()
+
+            
+
+                 })
+      
       })
       
     })
-    
+   
 }
 
 //appel des functions
