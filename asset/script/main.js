@@ -225,9 +225,10 @@ function initData() {
 
 
 function displayTask() {
-  tasks.forEach((taskDiv)=>(taskDiv.innerHTM=""))
+  tasks.forEach((taskDiv)=>(taskDiv.innerHTML=``))
   //display task
   data.forEach((item, index) => {
+    console.log(`Task: ${item.Title}, Column: ${item.column}`);
    const taskHTML  = `
                 <div class="task" draggable="true" onclick="afficherDetail(${index})">
                  <h5>${item.Title}</h5>
@@ -242,11 +243,24 @@ function displayTask() {
               
            
        `;
+      //  const targetColumn = document.getElementById(item.column);
+      //  if (targetColumn && targetColumn.querySelector(".tasks")) {
+      //      targetColumn.querySelector(".tasks").innerHTML += taskHTML;
+      //  } else {
+      //      console.error(`La colonne avec l'ID "${item.column}" n'existe pas.`);
+      //  }
       const targetColumn = document.getElementById(item.column);
-    targetColumn.querySelector(".tasks").innerHTML += taskHTML;
+if (!targetColumn) {
+    console.error(`La colonne avec l'ID "${item.column}" n'existe pas.`);
+    return;
+}
+targetColumn.querySelector(".tasks").innerHTML += taskHTML;
+       
   });
   dargTask()
+  localStorageData()
 }
+
 
 
 
@@ -265,7 +279,7 @@ function dargTask() {
         })
         item.addEventListener('dragend',function () {
             drag=null
-           
+            item.style.opacity = "1";
             
         })
       itemsDiv.forEach(div=>{
@@ -326,4 +340,5 @@ fermer.addEventListener('click',fermeModalData)
 // Fonction exécutée au chargement de la page
 document.addEventListener("DOMContentLoaded", () => {
     initData(); 
+   
 });
